@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#btnSubmitFile").click(function () {
+                var form = new FormData(document.getElementById("fileForm"));
+                $.ajax({
+                    url: "/import/upload",
+                    type: "post",
+                    data: form,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        $("#outputDiv").html(data);
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    }
+                });
+            });
+            $("#btnSubmitFileSAX").click(function () {
+                var form = new FormData(document.getElementById("fileFormSAX"));
+                $.ajax({
+                    url: "/import/import1",
+                    type: "post",
+                    data: form,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        $("#outputDiv").html(data);
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<h1>成功！</h1>
+<!--th:text 将div里面的文本内容设置为 -->
+<div th:text="${user}">这是显示欢迎信息</div>
+<form id="fileForm" action="/import/upload" method="POST" enctype="multipart/form-data">
+    <input id="file" type="file" name="file" class="btn btn-outline-primary"/>
+    <input id="btnSubmitFile" type="button" value="上传"/>
+</form>
+<form id="fileFormSAX" action="/import/import1" method="POST" enctype="multipart/form-data">
+    <input id="fileSAX" type="file" name="file" class="btn btn-outline-primary"/>
+    <input id="btnSubmitFileSAX" type="button" value="上传"/>
+</form>
+</body>
+</html>
