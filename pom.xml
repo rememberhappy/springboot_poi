@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.5</version>
+        <version>2.3.3.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.poiTest</groupId>
@@ -68,6 +68,19 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.28</version>
+        </dependency>
+
+        <!-- 公共信息管理，是本地项目springboot_commoninfoholder打成的jar -->
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>springboot_commoninfoholder</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <!-- 自定义的web拦截/过滤器/异常管理，是本地项目springboot_web_commonprocess打成的jar -->
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>springboot_web_commonprocess</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
