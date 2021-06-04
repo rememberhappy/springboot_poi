@@ -37,3 +37,21 @@ XSSFWorkbook:是操作Excel2007的版本，扩展名是.xlsx；
     在使用Excel模板下载数据时将不能动态改变表头，因为这种方式已经提前把excel写到硬盘的了就不能再改了
 
 操作excel，csv，pdf，以及压缩文件
+
+
+*******************************************************************************
+增加熔断降级处理
+1. 引入包
+       <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+2. 启动类上加注解 @EnableFeignClients，否则启动报错
+3. 定义feign接口 RedisFeignClientAgent类
+4. 处理降级，配置文件中配置。单独的feign接口调用不需要，降级的时候需要
+    feign:
+      hystrix:
+        enabled: true
+5. RedisFeignClientAgent类的 @FeignClient注解增加 fallback属性指向降级的处理类
+6. 降级的处理类 RedisFeignClientIml ，该类必须实现feign接口中的方法
+
