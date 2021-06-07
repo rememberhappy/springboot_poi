@@ -1,3 +1,5 @@
+server:
+  port: 8081
 
 ###ThymeLeaf配置
 spring:
@@ -12,8 +14,16 @@ spring:
     cache: false
     #配置模板路径，默认是templates，可以不用配置
     prefix: classpath:/templates/
+  # 让程序可以连接到sentinel的地址
+  cloud:
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080 # 指向sentinel地址
 
-# fallback 降级处理的开关
 feign:
-  hystrix:
+# 开启feign对sentinel的支持。fallback 降级处理的开启
+  sentinel:
     enabled: true
+# 开启feign对hystrix的支持。fallback 降级处理的开启
+#  hystrix:
+#    enabled: true

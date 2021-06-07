@@ -71,10 +71,16 @@
             <version>1.2.28</version>
         </dependency>
 
-        <!-- feign -->
+        <!-- feign，此包还自带了hystrix熔断器 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <!-- 熔断器2-sentinel -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+            <version>2.2.1.RELEASE</version>
         </dependency>
         <!-- 公共信息管理，是本地项目springboot_commoninfoholder打成的jar -->
         <dependency>
