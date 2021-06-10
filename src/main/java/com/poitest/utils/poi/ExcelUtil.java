@@ -79,7 +79,7 @@ public class ExcelUtil {
             // 获取excel内容，根据传入的excel类型，指定使用XSSFWorkbook或HSSFWorkbook格式进行加载
             Workbook wb = ExcelImportPOIUtil.getExcelInfo(is, isExcel2003);
             // 读取标题信息 其中也设置了有效列数量
-            List titleList = ExcelImportPOIUtil.readExcelTitle(wb);
+            List<String> titleList = ExcelImportPOIUtil.readExcelTitle(wb);
             //读取Excel信息
             List customerList = ExcelImportPOIUtil.readExcelValue(wb, isPriview);
             //读取Excel信息，转化成Bean对象

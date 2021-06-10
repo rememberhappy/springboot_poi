@@ -189,7 +189,7 @@ public class ExcelImportPOIUtil {
      *
      * @param wb
      * @param isPriview
-     * @return
+     * @return List<List<String>>
      */
     public static List readExcelValue(Workbook wb, Boolean isPriview) {
         // 得到第一个shell
@@ -208,7 +208,7 @@ public class ExcelImportPOIUtil {
             totalCells = sheet.getRow(0).getPhysicalNumberOfCells();
         }
         // 返回的值
-        List<List<String>> valueList = new ArrayList();
+        List<List<String>> valueList = new ArrayList<>();
         // 记录空行 规则：如果连续空行大于1行 下面的视为垃圾数据。【可以重新制定规则】
         int blankLine = 0;
         // 循环Excel行数,从第二行开始【下标是1】。标题不入库
@@ -231,7 +231,7 @@ public class ExcelImportPOIUtil {
                 blankLine = 0;
             }
             // 2. 处理非空行的列数据
-            List<String> temp = new ArrayList();
+            List<String> temp = new ArrayList<>();
             // 标记是否为插入的空白行 识别规则 插入的数据后第一个单元格为空
             boolean addFlag = false;
             //循环Excel的列
@@ -269,7 +269,7 @@ public class ExcelImportPOIUtil {
      * @param wb
      * @return
      */
-    public static List readExcelTitle(Workbook wb) {
+    public static List<String> readExcelTitle(Workbook wb) {
         // 得到第一个shell
         Sheet sheet = wb.getSheetAt(0);
         // 得到Excel的行数
@@ -285,7 +285,7 @@ public class ExcelImportPOIUtil {
         Row row = sheet.getRow(0);
         if (row == null) return null;
         // 返回的对象
-        List<String> titleList = new ArrayList();
+        List<String> titleList = new ArrayList<>();
         //循环Excel的列
         for (int c = 0; c < totalCells; c++) {
             // 获取每一个单元格的信息
