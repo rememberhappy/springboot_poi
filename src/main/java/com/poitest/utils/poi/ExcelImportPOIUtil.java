@@ -64,7 +64,7 @@ public class ExcelImportPOIUtil {
         if (clazz == null) {
             throw new RuntimeException("类型不能指定为空！");
         }
-        T t = clazz.newInstance();
+        T t;
         Field[] fields = clazz.getDeclaredFields();
         // 2. 处理excel中的数据
         // 得到第一个shell
@@ -79,7 +79,7 @@ public class ExcelImportPOIUtil {
             totalCells = sheet.getRow(0).getPhysicalNumberOfCells();
         }
         // 返回的值
-        List<List<String>> valueList = new ArrayList();
+        List<List<String>> valueList = new ArrayList<>();
         // 记录空行 规则：如果连续空行大于1行 下面的视为垃圾数据。【可以重新制定规则】
         int blankLine = 0;
         // 循环Excel行数,从第二行开始【下标是1】。标题不入库
@@ -102,7 +102,7 @@ public class ExcelImportPOIUtil {
                 blankLine = 0;
             }
             // 2. 处理非空行的列数据
-            List<String> temp = new ArrayList();
+            List<String> temp = new ArrayList<>();
             // 标记是否为插入的空白行 识别规则 插入的数据后第一个单元格为空
             boolean addFlag = false;
             //循环Excel的列
