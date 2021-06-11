@@ -2,6 +2,7 @@ package com.poitest.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.example.common.CommonInfoHolder;
+import com.example.log.CommonLog;
 import com.poitest.feign.RedisFeignClientAgent;
 import com.poitest.handle.CustomerBlockHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,7 @@ public class TestController {
         System.out.println("poi 项目中获取公共信息 userId：" + userId);
         String token = CommonInfoHolder.getToken();
         System.out.println("poi 项目中获取公共信息 token：" + token);
+        CommonLog.info("poi 项目中获取公共信息 token：{}", token);
         // feign 接口调用
         String s = redisFeignClient.redisTemplateTest();
         System.out.println(s);
